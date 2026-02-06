@@ -105,3 +105,26 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+// Full Game Logic
+// CREATE playGame function
+function playGame() {
+// CREATE humanChoice variable
+// CREATE computerChoice Variable
+  let humanChoice,
+    computerChoice;
+
+// WHILE humanScore or computerScore are not 5
+  while (humanScore != 5 && computerScore != 5){
+  
+//  INPUT humanChoice CALL getHumanChoice()
+    humanChoice = getHumanChoice();
+
+//  INPUT computerChoice CALL getComputerChoice()
+    computerChoice = getComputerChoice();
+
+//  CALL playRound with humanChoice and computerChoice
+    playRound(humanChoice, computerChoice)
+  }
+}
+
+playGame();
