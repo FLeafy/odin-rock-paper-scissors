@@ -68,14 +68,9 @@ function getHumanChoice() {
 // Single Round Logic
 // CREATE function playRound with humanChoice and computerChoice as parameter
 function playRound(humanChoice, computerChoice) {
-// IF (humanChoice is rock and computerChoice is rock
-// humanChoice is paper and computerChoice is paper
-// humanChoice is scissor and computerChoice is scissor)
+// IF humanChoice is the same as computerChoice
 //  OUTPUT "TIE! Try again."
-  if ((humanChoice === "rock" && computerChoice === "rock") 
-    || (humanChoice === "paper" && computerChoice === "paper")
-    || (humanChoice === "scissor" && computerChoice === "scissor")
-  ) {
+  if (humanChoice === computerChoice) {
     alert(`TIE! ${humanChoice} is the same as ${computerChoice}`);
   }
 
@@ -124,6 +119,18 @@ function playGame() {
 
 //  CALL playRound with humanChoice and computerChoice
     playRound(humanChoice, computerChoice)
+  }
+
+// IF humanScore is equal to 5
+//  OUTPUT "You have won the game"
+  if (humanScore === 5) {
+    alert("You have won the game!");
+  }
+
+// ELSE
+//  OUTPUT "Computer have won the game"
+  else {
+    alert("You have lose the game");
   }
 }
 
