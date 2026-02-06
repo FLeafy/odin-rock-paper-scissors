@@ -65,7 +65,43 @@ function getHumanChoice() {
   return humanChoice;
 }
 
+// Single Round Logic
+// CREATE function playRound with humanChoice and computerChoice as parameter
+function playRound(humanChoice, computerChoice) {
+// IF (humanChoice is rock and computerChoice is rock
+// humanChoice is paper and computerChoice is paper
+// humanChoice is scissor and computerChoice is scissor)
+//  OUTPUT "TIE! Try again."
+  if ((humanChoice === "rock" && computerChoice === "rock") 
+    || (humanChoice === "paper" && computerChoice === "paper")
+    || (humanChoice === "scissor" && computerChoice === "scissor")
+  ) {
+    alert(`TIE! ${humanChoice} is the same as ${computerChoice}`);
+  }
 
+// ELSEIF (humanChoice is rock and computerChoice is paper
+// humanChoice is paper and computerChoice is scissor
+// humanChoice is scissor and computerChoice is rock
+//  INCREMENT computerScore
+//  OUTPUT "You Lose, computerChoice beat humanChoice"
+//  OUTPUT score
+  else if ((humanChoice === "rock" && computerChoice === "paper") 
+    || (humanChoice === "paper" && computerChoice === "scissor")
+    || (humanChoice === "scissor" && computerChoice === "rock")
+  ) {
+    computerScore++;
+    alert(`You Lose! ${computerChoice} beat ${humanChoice}.`);
+    alert(`Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+  }
 
-// console.log(getComputerChoice());
-// console.log(getHumanChoice());
+// ELSE 
+//  INCREMENT humanScore
+//  OUTPUT "You Win, humanChoice beat computerChoice"
+//  OUTPUT score
+  else {
+    humanScore++;
+    alert(`You Win! ${humanChoice} beat ${computerChoice}`);
+    alert(`Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+  }
+}
+
