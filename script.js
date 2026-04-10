@@ -71,7 +71,7 @@ function playRound(humanChoice, computerChoice) {
 // IF humanChoice is the same as computerChoice
 //  OUTPUT "TIE! Try again."
   if (humanChoice === computerChoice) {
-    alert(`TIE! ${humanChoice} is the same as ${computerChoice}`);
+    displayResult("tie", humanChoice, computerChoice);
   }
 
 // ELSEIF (humanChoice is rock and computerChoice is paper
@@ -85,8 +85,7 @@ function playRound(humanChoice, computerChoice) {
     || (humanChoice === "scissor" && computerChoice === "rock")
   ) {
     computerScore++;
-    alert(`You Lose! ${computerChoice} beat ${humanChoice}.`);
-    alert(`Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+    displayResult("lose", humanChoice, computerChoice);
   }
 
 // ELSE 
@@ -95,43 +94,52 @@ function playRound(humanChoice, computerChoice) {
 //  OUTPUT score
   else {
     humanScore++;
-    alert(`You Win! ${humanChoice} beat ${computerChoice}`);
-    alert(`Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+    displayResult("win", humanChoice, computerChoice);
   }
 }
 
-// Full Game Logic
-// CREATE playGame function
-function playGame() {
-// CREATE humanChoice variable
-// CREATE computerChoice Variable
-  let humanChoice,
-    computerChoice;
+const playerBtns = document.querySelectorAll("button");
 
-// WHILE humanScore or computerScore are not 5
-  while (humanScore != 5 && computerScore != 5){
-  
-//  INPUT humanChoice CALL getHumanChoice()
-    humanChoice = getHumanChoice();
+playerBtns.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const humanChoice = e.target.id;
+    const computerChoice = getComputerChoice();
 
-//  INPUT computerChoice CALL getComputerChoice()
-    computerChoice = getComputerChoice();
-
-//  CALL playRound with humanChoice and computerChoice
     playRound(humanChoice, computerChoice)
-  }
+  });
+});
 
-// IF humanScore is equal to 5
-//  OUTPUT "You have won the game"
+function displayResult(status, humanChoice, computerChoice) {
+  const resultText = document.querySelector("div");
+  const currentScore = document.createElement("p");
+
   if (humanScore === 5) {
-    alert("You have won the game!");
-  }
+    resultText.textContent = "You have won the game!";
+    currentScore.textContent = `Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`;
+    resultText.append(currentScore)
 
-// ELSE
-//  OUTPUT "Computer have won the game"
+    humanScore = 0;
+    computerScore = 0;
+  }
+  else if (computerScore === 5) {
+    resultText.textContent = "You have lose the game!";
+    currentScore.textContent = `Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`;
+    resultText.append(currentScore)
+
+    humanScore = 0;
+    computerScore = 0;
+  }
   else {
-    alert("You have lose the game");
+    if (status === "tie") {
+      resultText.textContent = `TIE! ${humanChoice} is the same as ${computerChoice}`;
+    } else if (status === "lose") {
+      resultText.textContent = `You Lose! ${computerChoice} beat ${humanChoice}.`;
+      currentScore.textContent = `Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`;
+      resultText.append(currentScore)
+    } else {
+      resultText.textContent =  `You Win! ${humanChoice} beat ${computerChoice}`;
+      currentScore.textContent =`Current Score, Human Score: ${humanScore}, Computer Score: ${computerScore}`;
+      resultText.append(currentScore)
+    }
   }
 }
-
-playGame();

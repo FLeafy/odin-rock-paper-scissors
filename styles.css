@@ -14,3 +14,44 @@ html {
   background-color: #1b1b1b;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+section {
+  max-width: 1920px;
+}
+
+button {
+  padding: 2rem;
+  background: #ff8aff;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition: padding 0.3s ease;
+
+  font-size: 1rem;
+}
+
+button:hover {
+  padding: 2rem 3rem;
+  transition: padding 0.3s ease;
+}
+
+button:nth-child(2) {
+  margin: 0 1rem;
+}
+
+div {
+  font-size: 1rem;
+  color: white;
+
+  margin-bottom: 1rem;
+
+  text-align: center;
+}
